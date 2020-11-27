@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:53:39 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 20:23:39 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/26 02:32:20 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int					ft_memcmp(const void *buff1, const void *buff2, size_t n);
 void				*ft_memcpy(void *destenation, const void *source, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *destination, int c, size_t n);
-char				*ft_strchr(char *str, char ch);
+char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s1);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcpy(char *dst, const char *src,
@@ -55,6 +55,9 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+char				**ft_split(char const *s, char c);
+char				*ft_strtrim(char const *s1, char const *set);
+char				*ft_strjoin(char const *s1, char const *s2);
 
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);

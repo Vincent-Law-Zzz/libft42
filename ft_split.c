@@ -6,24 +6,21 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:36:55 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/23 21:37:39 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/25 22:44:22 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_free(char **res, int j)
+static char		**ft_free(char **res)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	while (i < j)
-	{
-		free(res[i]);
-		i++;
-	}
+	while (res[i])
+		free(res[i++]);
 	free(res);
-	return (0);
+	return (NULL);
 }
 
 static int		ft_strcount(char const *s, char c)
@@ -47,27 +44,23 @@ char			**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		counter;
-	int		i;
 	int		len;
 	int		j;
 
-	i = 0;
 	j = 0;
 	counter = (s) ? ft_strcount(s, c) : 0;
-	if (!(res = (char **)malloc((counter + 1) * 8)) || (counter == 0))
-		return (0);
-	res[counter] = 0;
+	if (!(res = (char **)ft_calloc((counter + 1), sizeof(char*))))
+		return (NULL);
 	while (j < counter)
 	{
 		len = 0;
-		while ((s[i] != '\0') && (s[i] == c))
-			i++;
-		while ((s[i + len] != '\0') && (s[i + len] != c) && (s[i] != c))
+		while ((*s != '\0') && (*s == c))
+			s++;
+		while ((s[len] != '\0') && (s[len] != c))
 			len++;
-		if (!(res[j] = ft_substr(s, i, len)))
-			return (ft_free(res, j));
-		i = i + len;
-		j++;
+		if (!(res[j++] = ft_substr(s, 0, len)))
+			return (ft_free(res));
+		s += len;
 	}
 	return (res);
 }

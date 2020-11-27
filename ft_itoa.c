@@ -6,12 +6,11 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 20:43:11 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 00:34:13 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/26 00:13:10 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char	*ft_itoa(int n)
 {

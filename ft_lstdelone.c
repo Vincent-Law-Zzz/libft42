@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 02:21:03 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 02:23:53 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/25 23:36:57 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (del)
+	if (del && lst)
 		del(lst->content);
 	free(lst);
 }

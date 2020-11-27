@@ -6,7 +6,7 @@
 #    By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/08 20:18:18 by aapollo           #+#    #+#              #
-#    Updated: 2020/11/25 03:00:20 by aapollo          ###   ########.fr        #
+#    Updated: 2020/11/26 00:17:51 by aapollo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,9 @@ BNSOBJS = ${BNS:.c=.o}
 
 all: ${NAME}
 
-${NAME} :${OBJS}
+$(NAME) :${OBJS}
 		ar rc ${NAME} ${OBJS}
+		ranlib ${NAME}
 
 clean:
 		rm -f ${OBJS} ${BNSOBJS}
@@ -49,3 +50,4 @@ re: fclean all
 
 bonus: all ${BNSOBJS}
 		ar rc ${NAME} ${BNSOBJS}
+		ranlib ${NAME}

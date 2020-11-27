@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:26:54 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/23 20:27:58 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/26 00:13:21 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ int	ft_atoi(const char *str)
 	max = 0;
 	while (((*str >= 9) && (*str <= 13)) || (*str == 32))
 		str++;
-	if (*str == '-')
-	{
-		isneg = -1;
-		str++;
-	}
+	if ((*str == '-') || (*str == '+'))
+		if (*str++ == '-')
+			isneg = -1;
 	while ((*str >= '0') && (*str <= '9'))
 	{
 		res = res * 10 + (*str - '0');
