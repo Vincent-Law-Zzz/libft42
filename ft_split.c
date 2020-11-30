@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:36:55 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 22:44:22 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/30 17:48:06 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static char		**ft_free(char **res)
 
 	i = 0;
 	while (res[i])
-		free(res[i++]);
+	{
+		free(res[i]);
+		i++;
+	}
 	free(res);
 	return (NULL);
 }
