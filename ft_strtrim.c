@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 18:32:05 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/26 02:55:35 by aapollo          ###   ########.fr       */
+/*   Updated: 2020/11/27 14:15:06 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int	start;
 	int	end;
 
-	if (!s1 || !set || !(*set))
+	if (!s1)
 		return (0);
 	start = 0;
 	end = ft_strlen(s1);
