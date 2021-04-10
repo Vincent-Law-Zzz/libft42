@@ -3,17 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:53:39 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/26 02:32:20 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/03/19 12:13:13 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 # include <unistd.h>
+# include <stdio.h>
 # include <stdlib.h>
+# include <fcntl.h>
 
 typedef	struct		s_list
 {
@@ -58,7 +63,6 @@ void				ft_putnbr_fd(int n, int fd);
 char				**ft_split(char const *s, char c);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strjoin(char const *s1, char const *s2);
-
 t_list				*ft_lstnew(void *content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
@@ -69,5 +73,7 @@ void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+int					get_next_line(int fd, char **line);
+char				*ft_strjoin_gnl(char *s1, char *s2);
 
 #endif

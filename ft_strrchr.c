@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:45:53 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 20:32:42 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/03/23 01:31:17 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strrchr(const char *str, int ch)
 {
 	char *res;
 
-	res = 0;
+	res = NULL;
 	while (*str)
 	{
 		if (*str == ch)
