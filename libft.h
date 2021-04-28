@@ -6,7 +6,7 @@
 /*   By: telron <telron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:53:39 by aapollo           #+#    #+#             */
-/*   Updated: 2021/04/10 22:23:00 by telron           ###   ########.fr       */
+/*   Updated: 2021/04/26 17:54:43 by telron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 int					get_next_line(int fd, char **line);
 char				*ft_strjoin_gnl(char *s1, char *s2);
 t_list				*ft_lstadd_back_content(t_list **lst, void *content);
+void				ft_lstadd_by_cond(t_list **begin, t_list *new, int(*ft_cmp)(void*, void*));
 
 #endif
