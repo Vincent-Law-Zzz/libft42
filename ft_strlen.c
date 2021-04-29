@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:41:48 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/23 21:42:08 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 10:04:57 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,16 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t counter;
+	size_t	counter;
 
 	counter = 0;
-	while (*str != '\0')
+	if (str && *str)
 	{
-		counter++;
-		str++;
+		while (*str != '\0')
+		{
+			counter++;
+			str++;
+		}
 	}
 	return (counter);
 }

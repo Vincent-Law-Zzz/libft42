@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 18:16:22 by aapollo           #+#    #+#             */
-/*   Updated: 2021/03/16 22:11:48 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 08:06:46 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ char	*ft_strdup(const char *s1)
 		len = 0;
 	else
 		len = ft_strlen(s1);
-	if (!(res = (char *)malloc((len + 1) * sizeof(char))))
+	res = (char *)malloc((len + 1) * sizeof(char));
+	if (!res)
 		return (NULL);
 	counter = 0;
 	while (s1 && *s1 != '\0')

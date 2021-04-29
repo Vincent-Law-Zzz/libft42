@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 02:37:25 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 02:41:48 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 07:54:10 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
 	if (f)
+	{
 		while (lst)
 		{
 			f(lst->content);
 			lst = lst->next;
 		}
+	}
 }

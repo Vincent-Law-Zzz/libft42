@@ -1,32 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_by_cond.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 21:22:41 by aapollo           #+#    #+#             */
-/*   Updated: 2021/04/29 07:57:10 by aapollo          ###   ########.fr       */
+/*   Created: 2021/04/26 17:42:46 by telron            #+#    #+#             */
+/*   Updated: 2021/04/29 08:05:27 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *destenation, const void *source, size_t n)
+void	ft_lstadd_by_cond(t_list **begin, t_list *new, \
+	int(*ft_cmp)(void *, void *))
 {
-	unsigned char	*pdst;
-	unsigned char	*psrc;
+	t_list	*now;
+	t_list	*last;
 
-	pdst = destenation;
-	psrc = (unsigned char *)source;
-	if ((psrc == 0) && (pdst == 0))
-		return (destenation);
-	while (n > 0)
+	if (!begin || !new)
+		return ;
+	last = 0;
+	now = *begin;
+	while (now)
 	{
-		*pdst = *psrc;
-		pdst++;
-		psrc++;
-		n--;
+		if (ft_cmp(now->content, new->content) > 0)
+			break ;
+		last = now;
+		now = now->next;
 	}
-	return (destenation);
+	if (last)
+		last->next = new;
+	else
+		*begin = new;
+	new->next = now;
 }

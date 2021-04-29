@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 21:36:55 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/30 17:48:06 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 09:36:03 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_free(char **res)
+static char	**ft_free(char **res)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (res[i])
@@ -26,9 +26,9 @@ static char		**ft_free(char **res)
 	return (NULL);
 }
 
-static int		ft_strcount(char const *s, char c)
+static int	ft_strcount(char const *s, char c)
 {
-	int counter;
+	int	counter;
 
 	counter = 0;
 	while (*s != '\0')
@@ -43,7 +43,7 @@ static int		ft_strcount(char const *s, char c)
 	return (counter);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**res;
 	int		counter;
@@ -51,8 +51,11 @@ char			**ft_split(char const *s, char c)
 	int		j;
 
 	j = 0;
-	counter = (s) ? ft_strcount(s, c) : 0;
-	if (!(res = (char **)ft_calloc((counter + 1), sizeof(char*))))
+	counter = 0;
+	if (s)
+		counter = ft_strcount(s, c);
+	res = (char **)ft_calloc((counter + 1), sizeof(char *));
+	if (!res)
 		return (NULL);
 	while (j < counter)
 	{
@@ -61,7 +64,8 @@ char			**ft_split(char const *s, char c)
 			s++;
 		while ((s[len] != '\0') && (s[len] != c))
 			len++;
-		if (!(res[j++] = ft_substr(s, 0, len)))
+		res[j++] = ft_substr(s, 0, len);
+		if (!res[j - 1])
 			return (ft_free(res));
 		s += len;
 	}

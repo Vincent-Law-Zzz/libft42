@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:45:53 by aapollo           #+#    #+#             */
-/*   Updated: 2021/03/23 01:31:17 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 08:12:12 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 char	*ft_strrchr(const char *str, int ch)
 {
-	char *res;
+	char	*res;
 
 	res = NULL;
 	while (*str)
 	{
 		if (*str == ch)
-			res = (char*)str;
+			res = (char *)str;
 		str++;
 	}
 	if (*str == ch)
-		res = (char*)str;
+		res = (char *)str;
 	return (res);
 }

@@ -6,15 +6,15 @@
 /*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:26:30 by aapollo           #+#    #+#             */
-/*   Updated: 2021/03/19 12:13:51 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 10:02:08 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_get_line(char **line, char **remainder, char *endofstr, int flag)
+int	ft_get_line(char **line, char **remainder, char *endofstr, int flag)
 {
-	char	*tmp;
+	char		*tmp;
 
 	if (flag < 0)
 		return (-1);
@@ -22,16 +22,17 @@ int		ft_get_line(char **line, char **remainder, char *endofstr, int flag)
 	{
 		tmp = *remainder;
 		*endofstr = '\0';
-		if (!(*line = ft_strdup(*remainder)))
-			return (-1);
-		if (!(*remainder = ft_strdup((endofstr + 1))))
+		*line = ft_strdup(*remainder);
+		*remainder = ft_strdup((endofstr + 1));
+		if (!(*remainder) || !(*line))
 			return (-1);
 		free(tmp);
 		return (1);
 	}
 	if (flag == 0)
 	{
-		if (!(*line = ft_strdup(*remainder)))
+		*line = ft_strdup(*remainder);
+		if (!(*line))
 			return (-1);
 		free(*remainder);
 		*remainder = NULL;
@@ -40,7 +41,18 @@ int		ft_get_line(char **line, char **remainder, char *endofstr, int flag)
 	return (0);
 }
 
-int		get_next_line(int fd, char **line)
+int	ft_read(int *flag, int fd, char *buff, char **remainder)
+{
+	*flag = read(fd, buff, BUFFER_SIZE);
+	(buff)[*flag] = '\0';
+	*remainder = ft_trnr((*remainder == NULL), ft_strdup(buff), \
+		ft_strjoin_gnl(*remainder, buff));
+	if (!(*remainder))
+		return (-1);
+	return (1);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	char		buff[BUFFER_SIZE + 1];
 	static char	*remainder;
@@ -50,16 +62,15 @@ int		get_next_line(int fd, char **line)
 	if (!line || (fd < 0) || (BUFFER_SIZE <= 0))
 		return (-1);
 	flag = 1;
-	endofstr = NULL;
-	if ((remainder != NULL) && (endofstr = ft_strchr(remainder, '\n')))
+	endofstr = ft_strchr(remainder, '\n');
+	if ((remainder != NULL) && (endofstr))
 		return (ft_get_line(line, &remainder, endofstr, flag));
-	while ((endofstr == NULL) && (flag = read(fd, buff, BUFFER_SIZE)) > 0)
+	while ((endofstr == NULL) && (flag > 0))
 	{
-		buff[flag] = '\0';
-		if (!(remainder = (remainder == NULL) ? ft_strdup(buff) :
-			ft_strjoin_gnl(remainder, buff)))
+		if (ft_read(&flag, fd, buff, &remainder) == -1)
 			return (-1);
-		if ((endofstr = ft_strchr(remainder, '\n')))
+		endofstr = ft_strchr(remainder, '\n');
+		if (endofstr)
 			return (ft_get_line(line, &remainder, endofstr, flag));
 	}
 	return (ft_get_line(line, &remainder, endofstr, flag));

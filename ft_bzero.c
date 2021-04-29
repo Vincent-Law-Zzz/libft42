@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:28:23 by aapollo           #+#    #+#             */
-/*   Updated: 2021/03/17 05:34:44 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 07:33:51 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char *p;
+	unsigned char	*p;
 
 	p = s;
 	if (p == NULL)

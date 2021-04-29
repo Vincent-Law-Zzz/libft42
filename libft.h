@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: telron <telron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:53:39 by aapollo           #+#    #+#             */
-/*   Updated: 2021/04/10 22:23:00 by telron           ###   ########.fr       */
+/*   Updated: 2021/04/29 09:30:06 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef	struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
@@ -43,7 +43,7 @@ void				*ft_memset(void *destination, int c, size_t n);
 char				*ft_strchr(const char *s, int c);
 char				*ft_strdup(const char *s1);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
-size_t				ft_strlcpy(char *dst, const char *src,
+size_t				ft_strlcpy(char *dst, const char *src, \
 					size_t dstsize);
 size_t				ft_strlen(const char *str);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
@@ -71,10 +71,13 @@ int					ft_lstsize(t_list *lst);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), \
 					void (*del)(void *));
 int					get_next_line(int fd, char **line);
 char				*ft_strjoin_gnl(char *s1, char *s2);
 t_list				*ft_lstadd_back_content(t_list **lst, void *content);
+void				ft_lstadd_by_cond(t_list **begin, t_list *new, \
+					int(*ft_cmp)(void*, void*));
+void				*ft_trnr(int condition, void *yes, void *no);
 
 #endif

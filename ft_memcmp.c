@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 20:54:56 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 20:26:22 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 07:56:48 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	ft_memcmp(const void *buff1, const void *buff2, size_t n)
 	unsigned char	*p2;
 	int				counter;
 
-	p1 = (unsigned char*)buff1;
-	p2 = (unsigned char*)buff2;
+	p1 = (unsigned char *)buff1;
+	p2 = (unsigned char *)buff2;
 	counter = 0;
 	while (n > 0)
 	{
@@ -28,7 +28,7 @@ int	ft_memcmp(const void *buff1, const void *buff2, size_t n)
 		p1++;
 		p2++;
 		if (counter == 0)
-			continue;
+			continue ;
 		else
 			return (counter);
 	}

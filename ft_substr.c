@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 16:45:58 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/25 03:12:23 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 08:16:09 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,22 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*p;
-	size_t			slen;
-	unsigned int	counter;
+	char	*new;
+	size_t	x;
 
-	slen = (s) ? (ft_strlen(s)) : 0;
-	counter = 0;
-	p = ((start + len <= slen)) ? (char *)malloc((len + 1)) : 0;
-	if ((p == 0) && !(p = ((start < slen) && (slen > 0) && (p == 0)) ?
-		((char *)malloc((slen - start + 1))) : (char *)malloc(sizeof(char))))
-		return (0);
-	while ((counter++ < start) && (*s != '\0'))
-		s++;
-	counter = 0;
-	while ((counter < len) && (start <= slen) && (slen) && (len) && (*s))
+	x = 0;
+	if (!s)
+		return (NULL);
+	if (ft_strlen(s) < start)
+		return (ft_strdup(""));
+	new = (char *)malloc(sizeof(char) * len + 1);
+	if (!new)
+		return (NULL);
+	while (x < len)
 	{
-		p[counter] = *s;
-		counter++;
-		s++;
+		new[x] = s[start + x];
+		x++;
 	}
-	p[counter] = '\0';
-	return (p);
+	new[len] = '\0';
+	return (new);
 }

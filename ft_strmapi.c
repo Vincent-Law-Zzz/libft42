@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.21-school.ru>     +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/15 20:43:26 by aapollo           #+#    #+#             */
-/*   Updated: 2020/11/23 21:43:05 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/04/29 08:09:58 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!f || !s)
 		return (0);
 	len = ft_strlen(s);
-	if (!(res = (char*)malloc(len + 1)))
+	res = (char *)malloc(len + 1);
+	if (!res)
 		return (0);
 	while (counter < len)
 	{
