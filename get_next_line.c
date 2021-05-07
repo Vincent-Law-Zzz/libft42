@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: telron <telron@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:26:30 by aapollo           #+#    #+#             */
-/*   Updated: 2021/04/29 10:02:08 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/05/03 04:55:20 by telron           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,19 @@ int	ft_get_line(char **line, char **remainder, char *endofstr, int flag)
 		*endofstr = '\0';
 		*line = ft_strdup(*remainder);
 		*remainder = ft_strdup((endofstr + 1));
+		free(tmp);
 		if (!(*remainder) || !(*line))
 			return (-1);
-		free(tmp);
 		return (1);
 	}
 	if (flag == 0)
 	{
-		*line = ft_strdup(*remainder);
-		if (!(*line))
-			return (-1);
-		free(*remainder);
+		*line = *remainder;
+		if (*line == 0)
+			*line = ft_strdup("");
 		*remainder = NULL;
+		if (*line == 0)
+			return (-1);
 		return (0);
 	}
 	return (0);
@@ -44,9 +45,13 @@ int	ft_get_line(char **line, char **remainder, char *endofstr, int flag)
 int	ft_read(int *flag, int fd, char *buff, char **remainder)
 {
 	*flag = read(fd, buff, BUFFER_SIZE);
+	if (*flag == -1)
+		return (-1);
 	(buff)[*flag] = '\0';
-	*remainder = ft_trnr((*remainder == NULL), ft_strdup(buff), \
-		ft_strjoin_gnl(*remainder, buff));
+	if (*remainder == NULL)
+		*remainder = ft_strdup(buff);
+	else
+		*remainder = ft_strjoin_gnl(*remainder, buff);
 	if (!(*remainder))
 		return (-1);
 	return (1);
