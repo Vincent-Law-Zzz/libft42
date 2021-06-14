@@ -79,5 +79,7 @@ t_list				*ft_lstadd_back_content(t_list **lst, void *content);
 void				ft_lstadd_by_cond(t_list **begin, t_list *new, \
 					int(*ft_cmp)(void*, void*));
 void				*ft_trnr(int condition, void *yes, void *no);
-
+t_list				*ft_lstadd_content_by_cond(t_list **begin, void *content, \
+					int(*ft_cmp)(void *, void *));
+void				ft_lstiteri(t_list *lst, void (*f)(void *,int));
 #endif
