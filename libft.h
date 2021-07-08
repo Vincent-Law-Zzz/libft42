@@ -6,7 +6,7 @@
 /*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 21:53:39 by aapollo           #+#    #+#             */
-/*   Updated: 2021/04/29 10:30:10 by aapollo          ###   ########.fr       */
+/*   Updated: 2021/07/09 00:53:15 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,5 @@ void				ft_lstadd_by_cond(t_list **begin, t_list *new, \
 void				*ft_trnr(int condition, void *yes, void *no);
 t_list				*ft_lstadd_content_by_cond(t_list **begin, void *content, \
 					int(*ft_cmp)(void *, void *));
-void				ft_lstiteri(t_list *lst, void (*f)(void *,int));
+void				ft_lstiteri(t_list *lst, void (*f)(void *, int));
 #endif

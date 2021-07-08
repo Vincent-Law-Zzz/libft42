@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: telron <telron@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aapollo <aapollo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 18:26:30 by aapollo           #+#    #+#             */
-/*   Updated: 2021/05/03 04:55:20 by telron           ###   ########.fr       */
+/*   Updated: 2021/07/09 00:52:56 by aapollo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_get_line(char **line, char **remainder, char *endofstr, int flag)
 {
 	char		*tmp;
 
-	if (flag < 0)
-		return (-1);
 	if (flag > 0)
 	{
 		tmp = *remainder;
